@@ -25,19 +25,21 @@ public class Main {
 
         System.out.print("Enter your account number: ");
         int number = sc.nextInt();
-        accountBank.setAccountNumber(number);
 
         System.out.print("Enter your account title: ");
-        String spaceVoid = sc.nextLine();
-        accountBank.accountTitle = sc.nextLine(); //acesso diretamente na classe
+        String stringEmpty = sc.nextLine();
+        accountBank.accountTitle = sc.nextLine();
 
         System.out.print("do you have initial withdrawal? [Y/N]: ");
-        accountBank.decision = sc.nextLine().charAt(0);
+        char decision = sc.nextLine().charAt(0);
 
-        if(accountBank.decision == 'y' || accountBank.decision == 'Y'){
-            System.out.print("Enter initial value: $ ");
+        if(decision == 'Y' || decision == 'y'){
+            System.out.print("Enter your initial value: $ ");
             double value = sc.nextDouble();
-            accountBank.setInitialValue(value);
+            accountBank = new AccountBank(number, accountBank.accountTitle, value);
+        }
+        else{
+            accountBank = new AccountBank(number, accountBank.accountTitle);
         }
 
         //Data output 0.1

@@ -2,40 +2,29 @@ public class AccountBank {
 
     private int accountNumber;
     public String accountTitle;
-    public char decision;
     private double initialValue;
 
     public AccountBank(){
 
     }
 
-    public AccountBank(int accountNumber, String accountTitle, char decision, double initialValue){
+    public AccountBank(int accountNumber, String accountTitle, double initialValue){
         this.accountNumber = accountNumber;
         this.accountTitle = accountTitle;
-        this.decision = decision;
         this.initialValue = initialValue;
     }
 
-    public AccountBank(int accountNumber, char decision, String accountTitle){
+    public AccountBank(int accountNumber, String accountTitle){
         this.accountNumber = accountNumber;
         this.accountTitle = accountTitle;
-        this.decision = decision;
     }
 
     public int getAccountNumber(){
         return accountNumber;
     }
 
-    public void setAccountNumber(int accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
     public double getInitialValue(){
         return initialValue;
-    }
-
-    public void setInitialValue(double initialValue){
-        this.initialValue = initialValue;
     }
 
     public double AddMoney(double money){
