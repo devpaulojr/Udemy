@@ -23,7 +23,7 @@ public class Pedido {
         this.nome = nome;
         this.nivelDeContratacao = nivelDeContratacao;
         this.salarioBase = salarioBase;
-        this.departamento = this.departamento;
+        this.departamento = departamento;
     }
 
     public String getNome(){
@@ -70,7 +70,7 @@ public class Pedido {
 
     @Override
     public String toString(){
-        return departamento + "\n"
+        return departamento.getNome() + "\n"
                 + nome + "\n"
                 + nivelDeContratacao + "\n"
                 + salarioBase + "\n";
