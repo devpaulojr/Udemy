@@ -2,7 +2,6 @@ package entidades;
 
 import enumeracao.NivelDeContratacao;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.ArrayList;
@@ -16,15 +15,15 @@ public class Pedido {
     private Departamento departamento;
     List<HorasContratadas> contratos = new ArrayList<>(); // inicializada
 
-    public Pedido(){
+    public Pedido(Departamento departamento){
 
     }
 
-    public Pedido(String nome, NivelDeContratacao nivelDeContratacao, Double salarioBase, Departamento departamento){
+    public Pedido(Departamento departamento, String nome, NivelDeContratacao nivelDeContratacao, Double salarioBase){
         this.nome = nome;
         this.nivelDeContratacao = nivelDeContratacao;
         this.salarioBase = salarioBase;
-        this.departamento = departamento;
+        this.departamento = this.departamento;
     }
 
     public String getNome(){
@@ -61,10 +60,19 @@ public class Pedido {
         int mesCalendario = calendario.get(Calendar.MONTH);
         Double soma = salarioBase;
         for(HorasContratadas linha : contratos){
+            calendario.setTime(linha.getDataContrato());
             if(anoCalendario == ano && mesCalendario == mes){
                 soma += linha.valorTotal();
             }
         }
         return soma;
+    }
+
+    @Override
+    public String toString(){
+        return departamento + "\n"
+                + nome + "\n"
+                + nivelDeContratacao + "\n"
+                + salarioBase + "\n";
     }
 }

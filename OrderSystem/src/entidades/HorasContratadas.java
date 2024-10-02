@@ -33,4 +33,5 @@ public class HorasContratadas {
     public Double valorTotal(){
         return valorPorHora * horas;
     }
+
 }
