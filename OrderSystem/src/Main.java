@@ -31,13 +31,11 @@ public class Main {
         System.out.print("Senioridade: ");
         String senioridade = sc.nextLine();
 
-        System.out.print("Digite seu salario base: ");
+        System.out.print("Digite seu salario base: R$ ");
         Double salarioLiquido = sc.nextDouble();
 
         Pedido pedido = new Pedido(new Departamento(departamentoNome), nome, NivelDeContratacao.valueOf(senioridade),
                 salarioLiquido);
-
-        System.out.println(pedido);
 
 
         // Quantidade de contratos digitado pelo usuário
@@ -45,8 +43,11 @@ public class Main {
         System.out.print("Digite a quantidade de contratos: ");
         int quantidadeContrato = sc.nextInt();
 
-        for(int line = 0; line < quantidadeContrato; quantidadeContrato ++){
-            System.out.println("Digite os dados do " + (line+1) + "° contrato: ");
+
+        int contador = 1;
+
+        for(int line = 0; line < quantidadeContrato; line ++){
+            System.out.println("Digite os dados do " + (contador) + "° contrato: ");
 
             System.out.print("Data do contrato (DD/MM/YYYY): ");
             Date dataContrato = sdf.parse(sc.next());
@@ -58,7 +59,29 @@ public class Main {
             Integer duracaoHora = sc.nextInt();
 
             HorasContratadas horasContratadas = new HorasContratadas(dataContrato, valorHora, duracaoHora);
+
+            pedido.adicionarContrato(horasContratadas);
+
+            contador ++;
         }
+
+        // mês e ano dos contratos
+
+        System.out.print("Digite o mês e ano do contrato para calcular a renda total: ");
+        String mesContratoAnoContrato = sc.next();
+
+
+        Integer mes = Integer.parseInt(mesContratoAnoContrato.substring(0, 2));
+        Integer ano = Integer.parseInt(mesContratoAnoContrato.substring(3));
+
+
+        //saida de dados geral
+        System.out.println("\n");
+
+        System.out.println("Nome do departamento: " + pedido.getDepartamento().getNome());
+        System.out.println("Nome do usuário: " + pedido.getNome());
+        System.out.println("nivel: " + pedido.getNivelDeContratacao());
+        System.out.println("Renda do mês " + mesContratoAnoContrato + " R$ " + pedido.valorTotalRenda(ano, mes));
 
         sc.close();
 

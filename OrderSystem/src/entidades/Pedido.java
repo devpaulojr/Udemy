@@ -16,7 +16,6 @@ public class Pedido {
     List<HorasContratadas> contratos = new ArrayList<>(); // inicializada
 
     public Pedido(Departamento departamento){
-
     }
 
     public Pedido(Departamento departamento, String nome, NivelDeContratacao nivelDeContratacao, Double salarioBase){
@@ -54,25 +53,21 @@ public class Pedido {
         contratos.remove(contratadas);
     }
 
-    public Double valorTotal(Integer ano, Integer mes){
+    public Double valorTotalRenda(Integer ano, Integer mes){
         Calendar calendario = Calendar.getInstance();
-        int anoCalendario = calendario.get(Calendar.YEAR);
-        int mesCalendario = calendario.get(Calendar.MONTH);
         Double soma = salarioBase;
+
         for(HorasContratadas linha : contratos){
             calendario.setTime(linha.getDataContrato());
-            if(anoCalendario == ano && mesCalendario == mes){
+
+            int anoContrato = calendario.get(Calendar.YEAR);
+            int mesContrato = calendario.get(Calendar.MONTH) + 1;
+
+            if(ano == anoContrato && mes == mesContrato){
                 soma += linha.valorTotal();
             }
         }
         return soma;
     }
 
-    @Override
-    public String toString(){
-        return departamento.getNome() + "\n"
-                + nome + "\n"
-                + nivelDeContratacao + "\n"
-                + salarioBase + "\n";
-    }
 }

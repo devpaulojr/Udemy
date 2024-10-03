@@ -9,11 +9,10 @@ public class HorasContratadas {
     private Integer horas;
 
     public HorasContratadas(){
-
     }
 
-    public HorasContratadas(Date data, Double valorPorHora, Integer horas){
-        this.dataContrato = data;
+    public HorasContratadas(Date dataContrato, Double valorPorHora, Integer horas){
+        this.dataContrato = dataContrato;
         this.valorPorHora = valorPorHora;
         this.horas = horas;
     }
